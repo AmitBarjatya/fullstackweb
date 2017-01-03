@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <title>Assignment 2</title>
+  <meta name="author" content="Amit Barjatya">
+</head>
+<body onload="play_game()">
+  <script>
+    var colors=["violet","indigo","blue","green","yellow","orange"];
+    var colorsHex = ["#EE82EE","#4B0082","#0000FF","#00FF00","#FFFF00","#FFA500"];
+    var myColorPosition;
+    var finished = false;
+    var guesses = 0;
+    function play_game(){
+      colors.sort(function(a,b){return a-b;});
+      myColorPosition = Math.floor(Math.random()*(colors.length));
+      alert("Computer has selected "+colors[myColorPosition]+" color.");
+      while(!finished){
+        var chosenColor = prompt("Color list is \n\n"+
+                  colors.join(",")+"\n\nEnter your color:");
+        var index = colors.indexOf(chosenColor);
+        guesses+=1;
+        finished = check_guess(index);
+      }
+    }
+
+    function check_guess(index){
+      if (index === -1) {
+        alert("I don't recognize that color!");
+        return false;
+      }
+
+      if (index > myColorPosition) {
+        alert("Your guess is alphabetically higher than computer. Please try again.");
+        return false;
+      }
+
+      if (index < myColorPosition) {
+        alert("Your guess is alphabetically lower than computer. Please try again.");
+        return false;
+      }
+
+      if (index === myColorPosition) {
+        alert("Your guess is correct.You have taken "+guesses+" guesses.");
+        var myBody=document.getElementsByTagName("body")[0];
+            myBody.style.background=colorsHex[myColorPosition];
+        return true;
+      }
+    }
+  </script>
+</body>
+</html>

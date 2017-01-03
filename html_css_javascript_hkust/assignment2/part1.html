@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <title>Assignment 2</title>
+  <meta name="author" content="Amit Barjatya">
+</head>
+<body onload="play_game()">
+  <script>
+    var colors=["violet","indigo","blue","green","yellow","orange"];
+    var myColorPosition;
+    var finished = false;
+    var guesses = 0;
+    function play_game(){
+      colors.sort(function(a,b){return a-b;});
+      myColorPosition = Math.floor(Math.random()*(colors.length));
+      alert("Computer has selected "+colors[myColorPosition]+" color.");
+      while(!finished){
+        var chosenColor = prompt("Color list is \n\n"+
+                  colors.join(",")+"\n\nEnter your color:");
+        var index = colors.indexOf(chosenColor);
+        guesses+=1;
+
+        if (index === myColorPosition) {
+          alert("Your guess is correct.You have taken "+guesses+" guesses.");
+          finished = true;
+        }else{
+          alert("Your guess was incorrect. Please try again.");
+        }
+      }
+    }
+  </script>
+</body>
+</html>
