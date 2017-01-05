@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+  <title>Assignment 3</title>
+  <meta name="author" content="Amit Barjatya">
+  <!-- all the style rules -->
+  <style>
+    img{position: absolute;}
+    div{position: absolute;width: 500px;height: 500px;}
+    #rightSide{left: 500px;border-left: 1px solid black;}
+  </style>
+</head>
+
+<!-- it's the body of our page -->
+<body onload="generateFaces()" id="theBody">
+  <h2>Matching Game</h2>
+  <p>Click on the extra smiling face on the left.</p>
+  <div id="leftSide"></div>
+  <div id="rightSide"></div>
+
+
+<!-- starting the java script section -->
+
+  <script>
+    var numberOfFaces = 5;
+    var theLeftSide=document.getElementById("leftSide");
+    var theRightSide = document.getElementById("rightSide");
+    var theBody = document.getElementById("theBody");
+
+// the generateFaces function removes all the existing child nodes
+// adds numberOfFaces img elements to left div
+// clones them to right div after removing the last child in leftdiv
+// attaches onclick to leftdiv lastchild to move next level if clicked
+    function generateFaces(){
+      while(theLeftSide.hasChildNodes()){
+        theLeftSide.removeChild(theLeftSide.lastChild);
+      }
+      while(theRightSide.hasChildNodes()){
+        theRightSide.removeChild(theRightSide.lastChild);
+      }
+      for(var i=0;i<numberOfFaces;i++){
+        imgElement = document.createElement("img");
+        imgElement.src = "smile.png";
+        imgElement.style.top = Math.floor(Math.random()*400)+"px";
+        imgElement.style.left = Math.floor(Math.random()*400)+"px";
+        theLeftSide.appendChild(imgElement);
+      }
+       leftSideImages = theLeftSide.cloneNode(true);
+       leftSideImages.lastChild.remove();
+       theRightSide.appendChild(leftSideImages);
+       theLeftSide.lastChild.onclick = function nextlevel(event){
+         console.log("last item clicked");
+         event.stopPropagation();
+         numberOfFaces+=5;
+         generateFaces();
+       }
+    }
+
+    theBody.onclick = function gameOver() {
+      alert("Game Over!");
+      theBody.onclick = null;
+      theLeftSide.lastChild.onclick = null;
+    };
+
+  </script>
+
+</body>
+</html>
