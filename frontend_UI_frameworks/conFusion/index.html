@@ -307,7 +307,15 @@
       <script src="js/bootstrap.min.js"></script>
       <script>
         $(document).ready(function() {
+          $("#mycarousel").carousel({interval: 2000});
 
+          $("#carouselPause").click(function(){
+            $("#mycarousel").carousel('pause');
+          });
+
+          $("#carouselPlay").click(function(){
+            $("#mycarousel").carousel('cycle');
+          });
         });
       </script>
     </body></html>
