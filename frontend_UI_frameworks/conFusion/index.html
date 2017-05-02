@@ -51,32 +51,54 @@
             <li><a href="contactus.html"><i class="fa fa-envelope-o"></i>
               Contact</a></li>
           </ul>
-          <!-- start nav form -->
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-                <input type="email" class="form-control" id="email" name="email"
-                  placeholder="Email">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" id="password" name="password"
-                  placeholder="Password">
-            </div>
-            <div class="form-group">
-              <div class="checkbox">
-                <label class="checkbox-inline">
-                  <input type="checkbox">
-                  <span class="white-text-color">Remember me</span>
-                </label>
-              </div>
-            </div>
-            <div class="form-group">
-              <button class="btn btn-info">Sign In</button>
-            </div>
-          </form>
-          <!-- end nav form -->
+          <ul class="nav navbar-nav navbar-right">
+            <li><a data-toggle="modal" data-target="#loginModal">
+              <span class="glyphicon glyphicon-log-in"></span> Login
+            </a></li>
+          </ul>
         </div>
       </div>
     </nav>
+
+    <!-- login modal starts -->
+    <div class="modal fade" role="dialog" id="loginModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Login</h4>
+          </div>
+          <div class="modal-body">
+
+            <!-- start nav form -->
+            <form class="form-inline" role="form">
+              <div class="form-group">
+                  <input type="email" class="form-control input-sm" id="email" name="email"
+                    placeholder="Email">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control input-sm" id="password" name="password"
+                    placeholder="Password">
+              </div>
+              <div class="form-group">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Remember me
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-info btn-sm">Sign In</button>
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
+              </div>
+
+            </form>
+            <!-- end nav form -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- login model ends -->
 
     <header class="jumbotron">
 
@@ -95,7 +117,8 @@
 
           <div class="col-xs-12 col-sm-2" >
             <p style="padding:40px;"></p>
-            <a class="btn btn-warning" href="#reserve_table_section">Reserve Table</a>
+            <a class="btn btn-warning" href="#reserve_table_section"
+            data-toggle="tooltip" title="or Call us at 0852 12345678" data-placement="bottom">Reserve Table</a>
           </div>
         </div>
       </div>
@@ -272,4 +295,9 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
       </script>
       <script src="js/bootstrap.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+      </script>
     </body></html>
