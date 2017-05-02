@@ -52,7 +52,7 @@
               Contact</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a data-toggle="modal" data-target="#loginModal">
+            <li id="login"><a>
               <span class="glyphicon glyphicon-log-in"></span> Login
             </a></li>
           </ul>
@@ -189,7 +189,7 @@
 
           <div class="col-xs-12 col-sm-2" >
             <p style="padding:40px;"></p>
-            <a class="btn btn-warning" data-toggle="modal" data-target="#reserveTableModal">Reserve Table</a>
+            <a class="btn btn-warning" id="reserveTable">Reserve Table</a>
           </div>
         </div>
       </div>
@@ -315,6 +315,14 @@
 
           $("#carouselPlay").click(function(){
             $("#mycarousel").carousel('cycle');
+          });
+
+          $("#login").click(function(){
+            $("#loginModal").modal('show');
+          });
+
+          $("#reserveTable").click(function(){
+            $("#reserveTableModal").modal('show');
           });
         });
       </script>
